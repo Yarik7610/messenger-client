@@ -1,0 +1,16 @@
+@import '../../../../index.scss';
+
+.messagesWrap {
+  overflow-y: auto;
+  @extend #scrollbar;
+  .messages {
+    width: 80%;
+    margin: 0 auto;
+    @media (max-width: 768px) {
+      width: 90%;
+    }
+    & > li {
+      margin: 20px 0;
+    }
+  }
+}

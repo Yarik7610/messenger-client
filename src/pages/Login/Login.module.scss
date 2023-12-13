@@ -1,0 +1,9 @@
+@import '../../Variables.scss';
+@import '../../index.scss';
+
+.wrap {
+  @extend #formsWrap;
+  .form {
+    @extend #forms;
+  }
+}

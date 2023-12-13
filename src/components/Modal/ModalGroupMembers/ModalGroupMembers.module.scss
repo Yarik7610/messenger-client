@@ -1,0 +1,21 @@
+@import '../../../Variables.scss';
+@import '../../../index.scss';
+
+.wrap {
+  padding: 45px 20px;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  .header {
+    padding: 0 15px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    font-weight: $font-weight;
+  }
+  .ul {
+    overflow-y: auto;
+    @extend #invisibleScrollbar;
+  }
+}

@@ -1,0 +1,29 @@
+@import '../../Variables.scss';
+@import '../../index.scss';
+
+.grid {
+  height: inherit;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+  .right {
+    height: inherit;
+    position: relative;
+    @media (max-width: 768px) {
+      position: absolute;
+      background-color: white;
+      top: 0;
+      left: 0;
+      right: 0;
+      left: 0;
+      display: none;
+      height: 100vh;
+      z-index: 20;
+      &.mobile.active {
+        display: block;
+      }
+    }
+  }
+}

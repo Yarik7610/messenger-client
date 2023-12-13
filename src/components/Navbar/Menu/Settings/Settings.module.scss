@@ -1,0 +1,17 @@
+@import '../../../../Variables.scss';
+
+.wrap {
+  margin-top: 10px;
+  width: 100%;
+  font-size: 14px;
+  .id {
+    margin: 10px 0;
+    padding: 0 10px;
+    word-break: break-all;
+    color: black;
+    span {
+      color: $blue;
+      font-weight: $font-weight;
+    }
+  }
+}

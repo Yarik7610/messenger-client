@@ -1,0 +1,52 @@
+@import '../../../../../index.scss';
+@import '../../../../../Variables.scss';
+
+.li {
+  display: flex;
+  justify-content: flex-start;
+  &.you {
+    justify-content: flex-end;
+    .wrap {
+      .contentWrap {
+        align-items: flex-end;
+        .data {
+          background-color: $blue;
+          border-bottom-right-radius: 0px;
+          border-bottom-left-radius: 20px;
+          color: white;
+        }
+      }
+    }
+  }
+  .wrap {
+    word-break: break-all;
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    // img {
+    //   @extend #avatar;
+    // }
+    .contentWrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .data {
+        background-color: $lightgray;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        padding: 10px;
+        position: relative;
+        min-width: 100px;
+        .nickname {
+          font-weight: $font-weight;
+        }
+        .msgTime {
+          color: $textgray;
+          font-size: 14px;
+          text-align: end;
+        }
+      }
+    }
+  }
+}

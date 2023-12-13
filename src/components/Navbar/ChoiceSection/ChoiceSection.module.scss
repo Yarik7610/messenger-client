@@ -1,0 +1,23 @@
+@import '../../../Variables.scss';
+
+.choiceSection {
+  padding: 0 10px;
+  height: 44px;
+  border-bottom: 1px solid $bordergray;
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+  .li {
+    font-weight: $font-weight;
+    padding: 0px 15px 15px 15px;
+    cursor: pointer;
+    transform: translateY(1px);
+    border-bottom: 2px solid transparent;
+    &:hover {
+      border-bottom: 2px solid $textgray;
+    }
+    &.active {
+      border-bottom: 2px solid $blue;
+    }
+  }
+}

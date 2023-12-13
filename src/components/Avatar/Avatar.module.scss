@@ -1,0 +1,28 @@
+@import '../../Variables.scss';
+
+.imgWrap {
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  position: relative;
+  &.online {
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: 2px;
+      right: 2px;
+      background-color: #2dfe54;
+      width: 9px;
+      height: 9px;
+      border-radius: 9px;
+      border: 1px solid white;
+    }
+  }
+  img {
+    display: block;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    object-fit: cover;
+  }
+}

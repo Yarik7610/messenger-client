@@ -1,0 +1,34 @@
+@import '../../../../index.scss';
+@import '../../../../Variables.scss';
+
+.li {
+  @extend #navbarLi;
+  &.active {
+    color: white;
+    .lastMessage {
+      .lastSender {
+        color: white;
+      }
+    }
+  }
+  .removeBtn {
+    position: absolute;
+    bottom: 3px;
+    right: 10px;
+  }
+  .lastMessage {
+    width: 85%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    .lastSender {
+      color: $blue;
+    }
+  }
+  .lastTime {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+  }
+}

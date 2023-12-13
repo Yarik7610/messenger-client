@@ -1,0 +1,30 @@
+@import '../../../../index.scss';
+@import '../../../../Variables.scss';
+
+.wrap {
+  border-top: 1px solid $bordergray;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  min-height: 60px;
+  max-height: 250px;
+  .textarea {
+    width: 100%;
+    min-height: 60px;
+    max-height: 250px;
+    margin: auto 50px;
+    word-wrap: break-word;
+    overflow: auto;
+    resize: none;
+    outline: none;
+    @extend #invisibleScrollbar;
+  }
+  .right {
+    margin: 0 10px;
+    display: flex;
+    align-items: flex-end;
+    button {
+      margin-bottom: 5px;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../../index.scss';
+
+.wrap {
+  padding: 45px;
+  height: 100%;
+  @media (max-width: 768px) {
+    padding: 45px 25px;
+  }
+  .formWrap {
+    width: 100%;
+    max-width: 100%;
+    min-height: inherit;
+    padding: 0;
+    margin-top: 20px;
+    @extend #forms;
+  }
+}

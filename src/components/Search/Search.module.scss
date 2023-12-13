@@ -1,0 +1,28 @@
+@import '../../index.scss';
+
+.wrap {
+  width: 100%;
+  height: 42px;
+  border: 1px solid $bordergray;
+  border-radius: 22px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  position: relative;
+  &.active {
+    border: 1px solid $blue;
+  }
+  &:not(.active):hover {
+    border: 1px solid $gray;
+  }
+  input {
+    height: 100%;
+    margin: 0 10px;
+    width: calc(100% - 20px - 48px);
+  }
+  .clearBtnWrap {
+    position: absolute;
+    right: 0px;
+  }
+}

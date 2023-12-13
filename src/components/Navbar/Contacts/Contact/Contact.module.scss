@@ -1,0 +1,29 @@
+@import '../../../../index.scss';
+@import '../../../../Variables.scss';
+
+.li {
+  @extend #navbarLi;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &.list {
+    pointer-events: none;
+    .removeBtn {
+      display: none;
+    }
+  }
+  .nameAndId {
+    span {
+      font-size: 14px;
+      span {
+        color: $blue;
+      }
+    }
+  }
+  .removeBtn {
+    position: absolute;
+    top: 50%;
+    right: 7px;
+    transform: translate(0, -50%);
+  }
+}

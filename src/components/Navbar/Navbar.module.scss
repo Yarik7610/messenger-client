@@ -1,0 +1,30 @@
+@import '../../Variables.scss';
+@import '../../index.scss';
+
+.nav {
+  border-right: 1px solid $bordergray;
+  position: relative;
+  width: 100%;
+  height: inherit;
+  .headerWrap {
+    width: 100%;
+    padding: 0 10px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .searchWrap {
+      width: 85%;
+      margin: 0 auto;
+    }
+  }
+  .navbarList {
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    @extend #scrollbar;
+    .msg {
+      margin: 20px 0;
+      text-align: center;
+    }
+  }
+}

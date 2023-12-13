@@ -1,0 +1,17 @@
+@import '../../../../index.scss';
+@import '../../../../Variables.scss';
+
+.wrap {
+  position: relative;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $bordergray;
+  .imgAndNick {
+    padding: 0px 10px;
+    width: 100%;
+    .nickname {
+      margin: 10px 0;
+      overflow-x: auto;
+      @extend #invisibleScrollbar;
+    }
+  }
+}

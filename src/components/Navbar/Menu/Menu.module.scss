@@ -1,0 +1,13 @@
+@import '../../../Variables.scss';
+
+.wrap {
+  box-shadow: $border-shadow;
+  background-color: white;
+  position: absolute;
+  top: 56px;
+  left: 10px;
+  height: 375px;
+  width: 250px;
+  border-radius: 10px;
+  padding: 15px 10px;
+}
