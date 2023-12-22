@@ -1,32 +1,54 @@
 import { SendHorizontal } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { forwardRef, useEffect, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 import { useSelector } from 'react-redux'
 import { instance } from '../../../../api/axios'
 import { RoundButton } from '../../../../components/RoundButton/RoundButton'
+import { useSocket } from '../../../../contexts/SocketProvider'
 import s from './ChatInput.module.scss'
 
-export const ChatInput = ({ groupId, setMessages }) => {
+export const ChatInput = forwardRef(({ groupId, setMessages }, ref) => {
   const { _id } = useSelector((state) => state.auth)
   const [value, setValue] = useState('')
   const textAreaRef = useRef(null)
+  const { socket } = useSocket()
 
   const handleInput = (e) => {
-    textAreaRef.current.style.height = '50px'
-    textAreaRef.current.style.height = `${e.target.scrollHeight - 16}px`
+    textAreaRef.current.style.height = 'auto'
+    textAreaRef.current.style.height = `${e.target.scrollHeight}px`
   }
+
   const onMessageSend = async () => {
-    if (!value) return
+    if (!value.trim()) return
+    let trimmedLinebreakValue = value.replace(/^\s+|\s+$/g, '')
     const newMessage = {
-      text: value,
+      text: trimmedLinebreakValue,
       sender: _id,
       groupId: groupId
     }
     const response = await instance.post('/message', newMessage)
-    setMessages((prevMessages) => {
-      return [...prevMessages, response.data]
-    })
+    if (socket) socket.emit('sendNewMessage', { message: response.data, groupId, senderId: _id })
+    textAreaRef.current.style.height = 'auto'
     setValue('')
   }
+
+  useEffect(() => {
+    const handleGetNewMessage = (data) => {
+      if (groupId === data.groupId) {
+        flushSync(() =>
+          setMessages((prevMessages) => {
+            return [...prevMessages, data.message]
+          })
+        )
+        ref.current.querySelector('ul').lastChild.scrollIntoView({ block: 'end' })
+      }
+    }
+    if (socket) socket.on('getNewMessage', handleGetNewMessage)
+    return () => {
+      if (socket) socket.off('getNewMessage', handleGetNewMessage)
+    }
+  }, [socket])
+
   return (
     <div className={s.wrap}>
       <textarea
@@ -44,4 +66,4 @@ export const ChatInput = ({ groupId, setMessages }) => {
       </div>
     </div>
   )
-}
+})

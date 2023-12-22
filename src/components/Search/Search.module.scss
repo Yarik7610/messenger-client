@@ -1,7 +1,8 @@
-@import '../../index.scss';
+@import '../../extensions.scss';
 
 .wrap {
   width: 100%;
+  margin: 0 auto;
   height: 42px;
   border: 1px solid $bordergray;
   border-radius: 22px;

@@ -41,7 +41,7 @@ export const Settings = () => {
         </MenuButton>
       </div>
       {isModalOpened && (
-        <Modal setIsOpened={setIsModalOpened} height={modalIndex === 0 && '255px'}>
+        <Modal setIsOpened={setIsModalOpened} width="500px" height={modalIndex === 0 && '255px'}>
           {modalIndex === 0 ? <ModalAddContact /> : <ModalCreateGroup />}
         </Modal>
       )}

@@ -5,7 +5,8 @@ import s from './Avatar.module.scss'
 export const Avatar = ({ avatarPicture, id }) => {
   const { activeUsers } = useSocket()
 
-  const isOnline = activeUsers.some((u) => u.id === id)
+  let isOnline = false
+  if (activeUsers) isOnline = activeUsers.some((u) => u.id === id)
   return (
     <div className={`${s.imgWrap} ${isOnline ? s.online : ''}`}>
       <img src={useAvatarPicture(avatarPicture)} />

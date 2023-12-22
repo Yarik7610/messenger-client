@@ -3,7 +3,7 @@ import { memo, useEffect, useRef, useState } from 'react'
 import { RoundButton } from '../RoundButton/RoundButton'
 import s from './Search.module.scss'
 
-export const Search = memo(({ query, setQuery }) => {
+export const Search = memo(({ query, setQuery, width }) => {
   const [isFocused, setIsFocused] = useState(false)
   const searchRef = useRef(null)
 
@@ -26,6 +26,7 @@ export const Search = memo(({ query, setQuery }) => {
   }
   return (
     <div
+      style={{ width: width }}
       ref={searchRef}
       className={`${s.wrap} ${isFocused ? s.active : ''}`}
       onClick={() => setIsFocused(true)}>

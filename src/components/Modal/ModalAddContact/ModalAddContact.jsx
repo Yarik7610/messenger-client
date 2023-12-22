@@ -22,7 +22,7 @@ export const ModalAddContact = () => {
       toast.error("Can't add yourself")
       return
     }
-    if (contacts.find((c) => c._id === data.contactId)) {
+    if (contacts.some((c) => c._id === data.contactId)) {
       toast.error("Can't add your contact second time")
       return
     }

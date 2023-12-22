@@ -1,13 +1,16 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import { createGroup } from '../../../redux/slices/groupSlice'
 import { BlueButton } from '../../BlueButton/BlueButton'
+import { Search } from '../../Search/Search'
 import s from './ModalCreateGroup.module.scss'
 
 export const ModalCreateGroup = () => {
   const { contacts } = useSelector((state) => state.contact)
   const dispatch = useDispatch()
+  const [query, setQuery] = useState('')
 
   const {
     register,
@@ -15,7 +18,11 @@ export const ModalCreateGroup = () => {
     reset,
     formState: { errors }
   } = useForm({
-    mode: 'all'
+    mode: 'all',
+    defaultValues: {
+      name: '',
+      members: []
+    }
   })
 
   const onSubmit = (data) => {
@@ -31,6 +38,10 @@ export const ModalCreateGroup = () => {
     toast.success('Group was created')
     reset()
   }
+
+  const filteredContacts = contacts.filter((c) =>
+    c.nickname.toLowerCase().includes(query.toLowerCase())
+  )
 
   return (
     <div className={s.wrap}>
@@ -49,9 +60,9 @@ export const ModalCreateGroup = () => {
             <label className={`${s.label} ${errors.name ? `${s.error}` : ''}`}>Name</label>
           </div>
           {errors.name && <div className={s.errorMessage}>{errors.name.message}</div>}
-
+          <Search query={query} setQuery={setQuery} />
           <ul className={`${s.checkboxList} ${errors.members ? `${s.error}` : ''}`}>
-            {contacts.map((c) => (
+            {filteredContacts.map((c) => (
               <li key={c._id}>
                 <label className={`${s.checkboxOption}`}>
                   <input
@@ -65,7 +76,9 @@ export const ModalCreateGroup = () => {
             ))}
           </ul>
           {errors.members && <div className={s.errorMessage}>{errors.members.message}</div>}
-          <BlueButton>Next</BlueButton>
+          <div className={s.btnWrap}>
+            <BlueButton>Next</BlueButton>
+          </div>
         </form>
       </div>
     </div>

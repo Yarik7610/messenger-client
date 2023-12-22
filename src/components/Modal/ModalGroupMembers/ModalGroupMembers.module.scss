@@ -1,14 +1,17 @@
-@import '../../../Variables.scss';
-@import '../../../index.scss';
+@import '../../../variables.scss';
+@import '../../../extensions.scss';
 
 .wrap {
   padding: 45px 20px;
   height: inherit;
   display: flex;
   flex-direction: column;
+  .ul,
+  .header {
+    margin: 15px 0;
+  }
   .header {
     padding: 0 15px;
-    margin: 15px 0;
     display: flex;
     justify-content: flex-start;
     gap: 15px;

@@ -9,7 +9,6 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null)
   const [activeUsers, setActiveUsers] = useState(null)
 
-  console.log(activeUsers)
   useEffect(() => {
     if (!_id) return
     const newSocket = io.connect('http://localhost:3001', { query: { id: _id } })
@@ -28,7 +27,16 @@ export const SocketProvider = ({ children }) => {
     }
   }, [_id])
 
-  return <SocketContext.Provider value={{ socket, activeUsers }}>{children}</SocketContext.Provider>
+  const reconnectSocket = () => {
+    if (socket && !socket.connected) {
+      socket.connect()
+    }
+  }
+  return (
+    <SocketContext.Provider value={{ socket, reconnectSocket, activeUsers }}>
+      {children}
+    </SocketContext.Provider>
+  )
 }
 
 export const useSocket = () => useContext(SocketContext)

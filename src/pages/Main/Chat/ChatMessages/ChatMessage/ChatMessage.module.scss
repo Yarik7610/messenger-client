@@ -1,5 +1,5 @@
-@import '../../../../../index.scss';
-@import '../../../../../Variables.scss';
+@import '../../../../../extensions.scss';
+@import '../../../../../variables.scss';
 
 .li {
   display: flex;
@@ -23,9 +23,6 @@
     display: flex;
     gap: 10px;
     align-items: flex-end;
-    // img {
-    //   @extend #avatar;
-    // }
     .contentWrap {
       display: flex;
       flex-direction: column;
@@ -37,14 +34,8 @@
         border-top-left-radius: 20px;
         padding: 10px;
         position: relative;
-        min-width: 100px;
         .nickname {
           font-weight: $font-weight;
-        }
-        .msgTime {
-          color: $textgray;
-          font-size: 14px;
-          text-align: end;
         }
       }
     }

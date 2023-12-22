@@ -1,5 +1,5 @@
-@import '../../../../index.scss';
-@import '../../../../Variables.scss';
+@import '../../../../extensions.scss';
+@import '../../../../variables.scss';
 
 .wrap {
   border-top: 1px solid $bordergray;
@@ -8,10 +8,12 @@
   overflow: hidden;
   min-height: 60px;
   max-height: 250px;
+  box-sizing: border-box;
   .textarea {
     width: 100%;
-    min-height: 60px;
-    max-height: 250px;
+    min-height: inherit;
+    //т.к 1px занимает border сверху у .wrap
+    max-height: 249px;
     margin: auto 50px;
     word-wrap: break-word;
     overflow: auto;
@@ -23,8 +25,5 @@
     margin: 0 10px;
     display: flex;
     align-items: flex-end;
-    button {
-      margin-bottom: 5px;
-    }
   }
 }

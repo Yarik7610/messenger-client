@@ -20,8 +20,8 @@ export const Login = () => {
     mode: 'all'
   })
 
-  const onSubmit = async (data) => {
-    await dispatch(loginUser(data))
+  const onSubmit = (data) => {
+    dispatch(loginUser(data))
     navigate('/')
     reset()
   }

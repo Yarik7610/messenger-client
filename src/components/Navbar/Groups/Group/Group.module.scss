@@ -1,34 +1,37 @@
-@import '../../../../index.scss';
-@import '../../../../Variables.scss';
+@import '../../../../extensions.scss';
+@import '../../../../variables.scss';
 
 .li {
   @extend #navbarLi;
   &.active {
     color: white;
-    .lastMessage {
-      .lastSender {
+  }
+  .content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .left {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      .unreadMsgAmount {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $blue;
+        min-width: 20px;
+        min-height: 20px;
+        padding: 5px;
+        border-radius: 40px;
         color: white;
+        font-size: 12px;
       }
     }
-  }
-  .removeBtn {
-    position: absolute;
-    bottom: 3px;
-    right: 10px;
-  }
-  .lastMessage {
-    width: 85%;
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    .lastSender {
-      color: $blue;
+    .removeBtn {
+      margin: 0;
     }
-  }
-  .lastTime {
-    position: absolute;
-    top: 8px;
-    right: 10px;
   }
 }

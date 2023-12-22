@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
-export const WithAuth = ({ children }) => {
+export const WithoutAuth = ({ children }) => {
   const { token, error } = useSelector((state) => state.auth)
 
-  return <>{token && error === null ? <Navigate replace to={'/'} /> : children}</>
+  return <>{token && error === null ? children : <Navigate replace to={'/login'} />}</>
 }

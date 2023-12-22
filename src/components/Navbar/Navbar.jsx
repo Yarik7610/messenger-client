@@ -38,9 +38,7 @@ export const Navbar = () => {
         <RoundButton onClick={() => setIsMenuOpened(!isMenuOpened)} ref={burgerRef}>
           <MenuIcon color="#707579" />
         </RoundButton>
-        <div className={s.searchWrap}>
-          <Search query={query} setQuery={setQuery} />
-        </div>
+        <Search query={query} setQuery={setQuery} width="85%" />
       </div>
       <ChoiceSection section={section} handleSection={handleSection} />
       <ul className={s.navbarList}>

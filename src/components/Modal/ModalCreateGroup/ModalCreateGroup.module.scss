@@ -1,4 +1,5 @@
-@import '../../../index.scss';
+@import '../../../extensions.scss';
+@import '../../../variables.scss';
 
 .wrap {
   padding: 45px;
@@ -9,17 +10,24 @@
   .formWrap {
     width: 100%;
     max-width: 100%;
-    min-height: inherit;
+    height: 100%;
     padding: 0;
     margin-top: 20px;
     @extend #forms;
+    .btnWrap {
+      position: absolute;
+      bottom: 45px;
+      left: 45px;
+      right: 45px;
+    }
     .checkboxList {
       overflow-y: auto;
-      max-height: 220px;
-      margin-bottom: 20px;
+      max-height: 140px;
+      margin: 20px 0;
       @extend #invisibleScrollbar;
       &.error {
         margin-bottom: 0;
+        max-height: 120px;
       }
       li {
         width: fit-content;

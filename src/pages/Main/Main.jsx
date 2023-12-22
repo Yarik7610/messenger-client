@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { Outlet, useParams } from 'react-router-dom'
 import { MiddleMessage } from '../../components/MiddleMessage/MiddleMessage'
 import { Navbar } from '../../components/Navbar/Navbar'
+import { useSocket } from '../../contexts/SocketProvider'
 import { useWindowSize } from '../../hooks/useWindowSize'
 import { getContacts } from '../../redux/slices/contactSlice'
 import { getGroups } from '../../redux/slices/groupSlice'
@@ -12,11 +13,15 @@ export const Main = () => {
   const params = useParams()
   const dispatch = useDispatch()
   const windowSize = useWindowSize()
+  const { socket, reconnectSocket } = useSocket()
 
   useEffect(() => {
-    dispatch(getContacts())
-    dispatch(getGroups())
-  }, [])
+    if (socket) {
+      dispatch(getContacts())
+      dispatch(getGroups())
+      reconnectSocket()
+    }
+  }, [socket])
 
   return (
     <div className={s.grid}>
