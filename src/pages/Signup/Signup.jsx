@@ -27,9 +27,26 @@ export const Signup = () => {
     <>
       <div className={s.wrap}>
         <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
-          {/* <h1 className={s.title}>To use messenger, please sign Up</h1> */}
           <h1>Messenger</h1>
           <h2 className={s.title}>Sign up</h2>
+
+          <div className={`${s.group} ${errors.login ? `${s.error}` : ''}`}>
+            <input
+              type="text"
+              className={`${s.input} ${errors.login ? `${s.error}` : ''}`}
+              {...register('login', {
+                required: 'This field is required',
+                validate: (value) => value.trim() !== '' || 'No white spaces',
+                minLength: { value: 1, message: 'Min length is 1 symbol' },
+                maxLength: { value: 50, message: 'Max length was achieved' }
+              })}
+              required
+            />
+            <label className={`${s.label} ${errors.login ? `${s.error}` : ''}`}>
+              Login (unique)
+            </label>
+          </div>
+          {errors.login && <div className={s.errorMessage}>{errors.login.message}</div>}
 
           <div className={`${s.group} ${errors.nickname ? `${s.error}` : ''}`}>
             <input

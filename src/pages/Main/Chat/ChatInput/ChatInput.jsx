@@ -13,6 +13,10 @@ export const ChatInput = forwardRef(({ groupId, setMessages }, ref) => {
   const textAreaRef = useRef(null)
   const { socket } = useSocket()
 
+  useEffect(() => {
+    if (groupId && value) setValue('')
+  }, [groupId])
+
   const handleInput = (e) => {
     textAreaRef.current.style.height = 'auto'
     textAreaRef.current.style.height = `${e.target.scrollHeight}px`
@@ -47,7 +51,7 @@ export const ChatInput = forwardRef(({ groupId, setMessages }, ref) => {
     return () => {
       if (socket) socket.off('getNewMessage', handleGetNewMessage)
     }
-  }, [socket])
+  }, [socket, groupId])
 
   return (
     <div className={s.wrap}>

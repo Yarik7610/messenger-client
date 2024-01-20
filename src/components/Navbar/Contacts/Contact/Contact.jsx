@@ -1,30 +1,51 @@
-import { Trash2 } from 'lucide-react'
+import { LogOut, Trash2 } from 'lucide-react'
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import { removeContact } from '../../../../redux/slices/contactSlice'
-import { parseNick } from '../../../../utils/parseNick'
+import { kickMember } from '../../../../redux/slices/groupSlice'
+import { parseLongNick } from '../../../../utils/parseNick'
 import { Avatar } from '../../../Avatar/Avatar'
+import { LoginTag } from '../../../LoginTag/LoginTag'
+import { RoundButton } from '../../../RoundButton/RoundButton'
 import s from './Contact.module.scss'
 
-export const Contact = ({ contact, type }) => {
-  const { nickname, avatarPicture, _id } = contact
-  const parsedNick = parseNick(nickname)
+export const Contact = ({ contact, type, group }) => {
+  const { login, nickname, avatarPicture } = contact
+  const parsedNick = parseLongNick(nickname)
   const dispatch = useDispatch()
-  // const parsedLastMsg = lastMessage.length > 22 ? lastMessage.slice(0, 22) + '...' : lastMessage
+
   const handleRemoveContact = (contactId) => {
     dispatch(removeContact(contactId))
   }
+  const handleKickContact = (memberId) => {
+    dispatch(kickMember({ groupId: group._id, memberId }))
+      .unwrap()
+      .then((payload) => toast.success('User was kicked'))
+      .catch((error) => toast.error(error.message))
+  }
   return (
-    <li className={`${s.li} ${type === 'list' ? `${s.list}` : ''}`}>
-      <Avatar avatarPicture={avatarPicture} id={_id} />
+    <div
+      className={`${s.contact} ${
+        type === 'list' ? `${s.list}` : type === 'admin' ? `${s.admin}` : ''
+      }`}>
+      <Avatar avatarPicture={avatarPicture} id={contact._id} />
       <div className={s.nameAndId}>
         <h3>{parsedNick}</h3>
-        <span>
-          <span>Id:</span> {_id}
-        </span>
+        <LoginTag>{login}</LoginTag>
       </div>
-      <button className={`${s.removeBtn}`} onClick={() => handleRemoveContact(_id)}>
+      <button
+        type="button"
+        className={`${s.removeBtn}`}
+        onClick={
+          type !== 'list' && type !== 'admin' ? () => handleRemoveContact(contact._id) : null
+        }>
         <Trash2 />
       </button>
-    </li>
+      {type === 'admin' && contact._id !== group.admin && (
+        <RoundButton onClick={() => handleKickContact(contact._id)}>
+          <LogOut color="#707579" />
+        </RoundButton>
+      )}
+    </div>
   )
 }

@@ -1,0 +1,11 @@
+@import '../../variables.scss';
+@import '../../extensions.scss';
+
+.login {
+  width: 100%;
+  overflow-x: auto;
+  font-size: 14px;
+  font-weight: $font-weight;
+  color: $blue;
+  @extend #invisibleScrollbar;
+}

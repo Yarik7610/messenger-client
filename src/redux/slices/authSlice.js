@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { instance } from '../../api/axios'
 
 const initialState = {
+  login: null,
   nickname: null,
   _id: null,
   avatarPicture: null,
@@ -48,6 +49,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
+      state.login = null
       state.nickname = null
       state.token = null
       state._id = null
@@ -89,6 +91,7 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false
         state.error = null
+        state.login = action.payload.login
         state.nickname = action.payload.nickname
         state._id = action.payload._id
         state.avatarPicture = action.payload.avatarPicture
@@ -110,6 +113,7 @@ const authSlice = createSlice({
       .addCase(me.fulfilled, (state, action) => {
         state.isLoading = false
         state.error = null
+        state.login = action.payload.login
         state.nickname = action.payload.nickname
         state._id = action.payload._id
         state.avatarPicture = action.payload.avatarPicture

@@ -3,15 +3,18 @@ import { MiddleMessage } from '../../../../components/MiddleMessage/MiddleMessag
 import { ChatMessage } from './ChatMessage/ChatMessage'
 import s from './ChatMessages.module.scss'
 
-export const ChatMessages = forwardRef(({ messages, page, setIsFetching }, ref) => {
+export const ChatMessages = forwardRef(({ messages, page, setIsFetching, groupId }, ref) => {
   const firstTimeRef = useRef(true)
 
   useEffect(() => {
-    if (messages.length >= 10 && firstTimeRef.current) {
+    if (messages.length > 0 && groupId && firstTimeRef.current) {
       ref.current.querySelector('ul').lastChild.scrollIntoView({ block: 'end' })
       firstTimeRef.current = false
     }
-  }, [messages])
+    return () => {
+      firstTimeRef.current = true
+    }
+  }, [messages, groupId])
 
   useEffect(() => {
     const handleScroll = (e) => {

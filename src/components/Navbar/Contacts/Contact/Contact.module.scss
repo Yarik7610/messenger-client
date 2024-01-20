@@ -1,18 +1,34 @@
 @import '../../../../extensions.scss';
 @import '../../../../variables.scss';
 
-.li {
+.contact {
   @extend #navbarLi;
-  display: flex;
+  display: grid;
   align-items: center;
+  grid-template-columns: 45px 1fr 40px;
   gap: 10px;
+  width: 100%;
   &.list {
     pointer-events: none;
+    padding: 10px 0;
     .removeBtn {
       display: none;
     }
   }
+  &.admin {
+    padding: 10px 0;
+    .removeBtn {
+      display: none;
+    }
+    .kickBtn {
+      display: block;
+    }
+  }
+  .kickBtn {
+    display: none;
+  }
   .nameAndId {
+    overflow-x: auto;
     span {
       font-size: 14px;
       span {

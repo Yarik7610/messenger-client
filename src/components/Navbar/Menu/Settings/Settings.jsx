@@ -1,6 +1,6 @@
 import { CircleUser, LogOut, Users as UsersIcon } from 'lucide-react'
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useSocket } from '../../../../contexts/SocketProvider'
 import { logout } from '../../../../redux/slices/authSlice'
 import { MenuButton } from '../../../MenuButton/MenuButton'
@@ -13,7 +13,6 @@ export const Settings = () => {
   const [isModalOpened, setIsModalOpened] = useState(false)
   const [modalIndex, setModalIndex] = useState(0)
   const dispatch = useDispatch()
-  const { _id } = useSelector((state) => state.auth)
   const { socket } = useSocket()
 
   const handleClick = (index) => {
@@ -31,17 +30,14 @@ export const Settings = () => {
           <CircleUser strokeWidth="1.25px" /> Add contact
         </MenuButton>
         <MenuButton onClick={() => handleClick(1)}>
-          <UsersIcon strokeWidth="1.25px" /> Create group
+          <UsersIcon strokeWidth="1.25px" /> Create chat
         </MenuButton>
-        <div className={s.id}>
-          <span>Your id:</span> {_id}
-        </div>
         <MenuButton onClick={handleLogout}>
           <LogOut strokeWidth="1.25px" /> Log out
         </MenuButton>
       </div>
       {isModalOpened && (
-        <Modal setIsOpened={setIsModalOpened} width="500px" height={modalIndex === 0 && '255px'}>
+        <Modal setIsOpened={setIsModalOpened} width="400px" height={modalIndex === 0 && '255px'}>
           {modalIndex === 0 ? <ModalAddContact /> : <ModalCreateGroup />}
         </Modal>
       )}

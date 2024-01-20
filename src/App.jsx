@@ -15,7 +15,6 @@ import { me } from './redux/slices/authSlice'
 export const App = () => {
   const dispatch = useDispatch()
   const { token, error, statusMsg } = useSelector((state) => state.auth)
-
   useEffect(() => {
     if (statusMsg && error) toast.error(statusMsg)
     else if (statusMsg && !error) toast.success(statusMsg)

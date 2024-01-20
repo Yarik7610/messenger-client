@@ -28,7 +28,7 @@ export const Main = () => {
       <Navbar />
       {windowSize.width > 768 ? (
         <div className={s.right}>
-          {params.groupId ? <Outlet /> : <MiddleMessage>Choose group</MiddleMessage>}
+          {params.groupId ? <Outlet /> : <MiddleMessage>Choose chat</MiddleMessage>}
         </div>
       ) : (
         <div className={`${s.right} ${s.mobile} ${params.groupId ? `${s.active}` : ''}`}>

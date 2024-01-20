@@ -1,6 +1,7 @@
 import { Menu as MenuIcon } from 'lucide-react'
 import { useMemo, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { filterNavbarList } from '../../utils/filterNavbarList'
 import { RoundButton } from '../RoundButton/RoundButton'
 import { Search } from '../Search/Search'
 import { ChoiceSection } from './ChoiceSection/ChoiceSection'
@@ -15,22 +16,16 @@ export const Navbar = () => {
   const [section, setSection] = useState(0)
   const burgerRef = useRef(null)
 
-  const handleSection = (sectionId) => {
-    setSection(sectionId)
-  }
+  const handleSection = (sectionId) => setSection(sectionId)
 
   const { contacts } = useSelector((state) => state.contact)
   const { groups } = useSelector((state) => state.group)
 
-  const filterList = (list, type) => {
-    if (type === 'contacts')
-      return list.filter((li) => li.nickname.toLowerCase().includes(query.toLowerCase()))
-    else if (type === 'groups')
-      return list.filter((li) => li.name.toLowerCase().includes(query.toLowerCase()))
-  }
-
-  const filteredContacts = useMemo(() => filterList(contacts, 'contacts'), [contacts, query])
-  const filteredGroups = useMemo(() => filterList(groups, 'groups'), [groups, query])
+  const filteredContacts = useMemo(
+    () => filterNavbarList(query, 'contacts', contacts),
+    [contacts, query]
+  )
+  const filteredGroups = useMemo(() => filterNavbarList(query, 'groups', groups), [groups, query])
 
   return (
     <nav className={s.nav}>

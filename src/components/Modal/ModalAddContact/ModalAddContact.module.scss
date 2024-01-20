@@ -1,11 +1,8 @@
 @import '../../../extensions.scss';
 
 .wrap {
-  padding: 45px;
+  padding: 45px 25px;
   height: 100%;
-  @media (max-width: 768px) {
-    padding: 45px 25px;
-  }
   .formWrap {
     width: 100%;
     max-width: 100%;

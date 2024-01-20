@@ -32,11 +32,11 @@ export const Login = () => {
           <h1>Messenger</h1>
           <h2 className={s.title}>Log in</h2>
 
-          <div className={`${s.group} ${errors.nickname ? `${s.error}` : ''}`}>
+          <div className={`${s.group} ${errors.login ? `${s.error}` : ''}`}>
             <input
               type="text"
-              className={`${s.input} ${errors.nickname ? `${s.error}` : ''}`}
-              {...register('nickname', {
+              className={`${s.input} ${errors.login ? `${s.error}` : ''}`}
+              {...register('login', {
                 required: 'This field is required',
                 validate: (value) => value.trim() !== '' || 'No white spaces',
                 minLength: { value: 1, message: 'Min length is 1 symbol' },
@@ -44,9 +44,11 @@ export const Login = () => {
               })}
               required
             />
-            <label className={`${s.label} ${errors.nickname ? `${s.error}` : ''}`}>Nickname</label>
+            <label className={`${s.label} ${errors.login ? `${s.error}` : ''}`}>
+              Login (unique)
+            </label>
           </div>
-          {errors.nickname && <div className={s.errorMessage}>{errors.nickname.message}</div>}
+          {errors.login && <div className={s.errorMessage}>{errors.login.message}</div>}
 
           <div className={`${s.group} ${s.passwordGroup} ${errors.password ? `${s.error}` : ''}`}>
             <input

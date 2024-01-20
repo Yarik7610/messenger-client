@@ -8,7 +8,7 @@ export const Groups = memo(({ filteredGroups }) => {
       {filteredGroups.length > 0 ? (
         filteredGroups.map((g) => <Group group={g} key={g._id} />)
       ) : (
-        <MiddleMessage>No groups yet</MiddleMessage>
+        <MiddleMessage>No chats yet</MiddleMessage>
       )}
     </>
   )

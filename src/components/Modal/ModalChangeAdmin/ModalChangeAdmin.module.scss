@@ -1,0 +1,6 @@
+@import '../../../extensions.scss';
+@import '../../../variables.scss';
+
+.wrap {
+  @extend #modalCheckboxMembersWrap;
+}

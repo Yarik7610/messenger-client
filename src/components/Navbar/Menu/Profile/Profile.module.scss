@@ -5,13 +5,16 @@
   position: relative;
   padding-bottom: 10px;
   border-bottom: 1px solid $bordergray;
-  .imgAndNick {
+  .imgAndNickAndLogin {
     padding: 0px 10px;
     width: 100%;
-    .nickname {
+    .loginAndNick {
       margin: 10px 0;
-      overflow-x: auto;
-      @extend #invisibleScrollbar;
+      .nickname {
+        margin-bottom: 5px;
+        overflow-x: auto;
+        @extend #invisibleScrollbar;
+      }
     }
   }
 }

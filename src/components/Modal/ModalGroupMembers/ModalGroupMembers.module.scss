@@ -2,7 +2,7 @@
 @import '../../../extensions.scss';
 
 .wrap {
-  padding: 45px 20px;
+  padding: 45px 25px;
   height: inherit;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,6 @@
     margin: 15px 0;
   }
   .header {
-    padding: 0 15px;
     display: flex;
     justify-content: flex-start;
     gap: 15px;
@@ -19,6 +18,16 @@
   }
   .ul {
     overflow-y: auto;
+    max-height: 280px;
     @extend #invisibleScrollbar;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .admin {
+        font-size: 14px;
+        color: $blue;
+      }
+    }
   }
 }

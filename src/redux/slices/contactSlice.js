@@ -9,8 +9,8 @@ export const getContacts = createAsyncThunk('contact/getContacts', async () => {
   const { data } = await instance.get('/contact')
   return data
 })
-export const addContact = createAsyncThunk('contact/addContact', async (contactId) => {
-  const { data } = await instance.post('/contact', contactId)
+export const addContact = createAsyncThunk('contact/addContact', async (body) => {
+  const { data } = await instance.post('/contact', body)
   return data
 })
 export const removeContact = createAsyncThunk('contact/removeContact', async (contactId) => {
