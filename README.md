@@ -5,12 +5,16 @@ Web site that provides real time messaging with your contacts or groups.
 ## Images:
 
 ### Log in page:
-
-![alt text](<Снимок экрана 2024-07-03 164014.png>)
+![Снимок экрана 2024-07-03 164046](https://github.com/Yarik7610/messenger-client/assets/108609450/0091f1c0-1283-459e-944a-4e2b80e63090)
 
 ### Main page:
+![Снимок экрана 2024-07-03 164046](https://github.com/Yarik7610/messenger-client/assets/108609450/0e93d892-8ab5-4250-8cda-5ae628041c56)
 
-![alt text](<Снимок экрана 2024-07-03 164046.png>)
+### Create chat window:
+![Снимок экрана 2024-07-03 164101](https://github.com/Yarik7610/messenger-client/assets/108609450/79a99518-da22-42b6-b218-f25f11a22081)
+
+### Admin ownership window:
+![Снимок экрана 2024-07-03 164218](https://github.com/Yarik7610/messenger-client/assets/108609450/7d7144cf-2cf8-4339-b2cd-a50d93336859)
 
 ## Functionality:
 
@@ -19,7 +23,7 @@ Web site that provides real time messaging with your contacts or groups.
 3. Adding contact
 4. Creating / removing / editing chat group
 5. Searching contact / chat group
-6. Writing messages to chat / contact
+6. Writing messages to chat / contact in real time via Socket.IO
 7. Adding new members into chat group
 8. Kicking group members if you are the admin, admin ownership for groups
 9. Leaving the chat group / chat with contact
