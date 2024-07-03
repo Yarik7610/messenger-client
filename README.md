@@ -5,7 +5,7 @@ Web site that provides real time messaging with your contacts or groups.
 ## Images:
 
 ### Log in page:
-![Снимок экрана 2024-07-03 164046](https://github.com/Yarik7610/messenger-client/assets/108609450/0091f1c0-1283-459e-944a-4e2b80e63090)
+![Снимок экрана 2024-07-03 164014](https://github.com/Yarik7610/messenger-client/assets/108609450/e34e87d7-5519-4f0e-984b-3efc46028862)
 
 ### Main page:
 ![Снимок экрана 2024-07-03 164046](https://github.com/Yarik7610/messenger-client/assets/108609450/0e93d892-8ab5-4250-8cda-5ae628041c56)
