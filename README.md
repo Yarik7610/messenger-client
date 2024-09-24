@@ -29,6 +29,7 @@ Web site that provides real time messaging with your contacts or groups.
 9. Leaving the chat group / chat with contact
 10. Online people status
 11. Unread messages amount
+12. Pagination in the chats on scrolling to top
 
 ## How to start
 
