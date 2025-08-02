@@ -1,6 +1,7 @@
 # About
 
 Web site that provides real time messaging with your contacts or groups.
+Server part: https://github.com/Yarik7610/messenger-server
 
 ## Images:
 
